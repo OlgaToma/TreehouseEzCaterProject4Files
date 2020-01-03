@@ -23,8 +23,6 @@ class Game {
 
     startGame() {
         $('#overlay').hide();
-        $("overlay").removeClass("win");
-        $("overlay").removeClass("lose");
         let phrase = this.getRandomPhrase();
         phrase.addPhraseToDisplay();
         this.activePhrase = phrase;
@@ -57,9 +55,11 @@ class Game {
         if(this.checkForWin()) {
             $('#game-over-message').text("You won! :-)");
             $("#overlay").addClass("win");
+            $("#overlay").removeClass("lose");
         } else {
             $('#game-over-message').text("You lost! :-(");
             $("#overlay").addClass("lose");
+            $("#overlay").removeClass("win");
         }
 
         $('#phrase ul').empty();
